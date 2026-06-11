@@ -50,13 +50,13 @@ def create_indices():
 
 
 def seed_admin():
-    email = "admin@washelpful.com"
+    email = config.get("SEED_ADMIN_EMAIL", "admin@washelpful.local")
     existing = vtstorage.get_one(collection="users", query={"email": email})
     if existing:
         vtlog.info("admin_exists", email=email)
         return
 
-    password = "change-me-before-use"
+    password = config.get("SEED_ADMIN_PASSWORD", "change-me-before-use")
     user_id = str(uuid.uuid4())
     vtstorage.insert_one(collection="users", set_object={
         "_id": user_id,

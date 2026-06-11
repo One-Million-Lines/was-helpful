@@ -31,6 +31,8 @@ backend/**/__pycache__/
 
 .env
 .env.*
+backend/.env
+backend/.env.*
 
 # Python
 __pycache__/
